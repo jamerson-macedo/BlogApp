@@ -2,7 +2,6 @@ package com.organizze.jmdevelopers.blogapp.Activities;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -12,14 +11,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -43,6 +42,7 @@ public class RegistreActivity extends AppCompatActivity {
     private Button registrar;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
+    private TextView textView2;
 
 
     @Override
@@ -55,9 +55,18 @@ public class RegistreActivity extends AppCompatActivity {
         senha = findViewById(R.id.regsenha);
         senha2 = findViewById(R.id.regsenha2);
         registrar = findViewById(R.id.regbotao);
-        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBarlog);
         firebaseAuth = FirebaseAuth.getInstance();
+        textView2=findViewById(R.id.abrirlogin);
         progressBar.setVisibility(View.INVISIBLE);
+
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abrirlogin();
+            }
+        });
+
         registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,6 +176,12 @@ public class RegistreActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, REQUESTCODE);
+    }
+    public void abrirlogin(){
+        Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+        startActivity(loginActivity);
+
+
     }
 
     private void verificarpermissao() {
