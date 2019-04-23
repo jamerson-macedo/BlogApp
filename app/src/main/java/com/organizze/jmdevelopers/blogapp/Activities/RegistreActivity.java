@@ -77,7 +77,7 @@ public class RegistreActivity extends AppCompatActivity {
                 final String camponome = nome.getText().toString();
                 final String camposenha = senha.getText().toString();
                 final String camposenha2 = senha2.getText().toString();
-                if (campoemail.isEmpty() || camponome.isEmpty() || camposenha.isEmpty() || camposenha2.isEmpty() || !camposenha.equals(camposenha2)) {
+                if (campoemail.isEmpty() || camponome.isEmpty() || camposenha.isEmpty() || camposenha2.isEmpty() || !camposenha.equals(camposenha2) || pickimage==null) {
 
                     mensagemdeErro("Por favor preencha os campos");
                     registrar.setVisibility(View.VISIBLE);
@@ -220,10 +220,20 @@ public class RegistreActivity extends AppCompatActivity {
     }
     private void updateUI() {
 
-        Intent homeActivity = new Intent(getApplicationContext(),HomeActivity.class);
+        Intent homeActivity = new Intent(getApplicationContext(),Home.class);
         startActivity(homeActivity);
         finish();
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+        if(firebaseUser!=null){
+            updateUI();
+
+        }
     }
 }
