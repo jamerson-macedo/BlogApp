@@ -21,6 +21,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.organizze.jmdevelopers.blogapp.Fragments.ConfiguracoesFragment;
+import com.organizze.jmdevelopers.blogapp.Fragments.HomeFragment;
+import com.organizze.jmdevelopers.blogapp.Fragments.PerfilFragment;
 import com.organizze.jmdevelopers.blogapp.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -99,14 +102,12 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+           getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
+        } else if (id == R.id.nav_perfil) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new PerfilFragment()).commit();
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_config) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container,new ConfiguracoesFragment()).commit();
 
         } else if (id == R.id.nav_sair) {
             auth.signOut();
