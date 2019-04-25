@@ -1,8 +1,10 @@
 package com.organizze.jmdevelopers.blogapp.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -108,6 +110,9 @@ public class Home extends AppCompatActivity
 
         } else if (id == R.id.nav_sair) {
             auth.signOut();
+            startActivity(new Intent(this, RegistreActivity.class));
+            finish();
+
 
         }
 
@@ -125,7 +130,9 @@ public class Home extends AppCompatActivity
 
         email.setText(user.getEmail());
         nomeUsuario.setText(user.getDisplayName());
+
         Glide.with(this).load(user.getPhotoUrl()).into(foo);
+        Log.i("fotodeusuario", String.valueOf(user.getPhotoUrl()));
 
 
 

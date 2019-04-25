@@ -116,6 +116,9 @@ public class RegistreActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     mensagemdeErro("Cadastro realizado");
                     updateuserinfo(camponome, pickimage, firebaseAuth.getCurrentUser());
+                    updateUI();
+                    finish();
+
 
                 } else {
 

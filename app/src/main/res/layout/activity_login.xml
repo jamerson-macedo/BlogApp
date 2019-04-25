@@ -84,7 +84,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginBottom="104dp"
         android:background="@drawable/botao_style"
-        android:text="Cadastrar-se"
+        android:text="Login"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
