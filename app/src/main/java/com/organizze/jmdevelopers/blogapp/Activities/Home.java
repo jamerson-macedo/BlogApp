@@ -102,11 +102,14 @@ public class Home extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            getActionBar().setTitle("Home");
            getSupportFragmentManager().beginTransaction().replace(R.id.container,new HomeFragment()).commit();
         } else if (id == R.id.nav_perfil) {
+            getActionBar().setTitle("Perfil");
             getSupportFragmentManager().beginTransaction().replace(R.id.container,new PerfilFragment()).commit();
 
         } else if (id == R.id.nav_config) {
+            getActionBar().setTitle("Configurações");
             getSupportFragmentManager().beginTransaction().replace(R.id.container,new ConfiguracoesFragment()).commit();
 
         } else if (id == R.id.nav_sair) {
